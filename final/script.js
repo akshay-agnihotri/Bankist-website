@@ -70,8 +70,6 @@ btnScrollTo.addEventListener("click", function (e) {
   section1.scrollIntoView({ behavior: "smooth" });
 });
 
-
-
 // //rgb(255,255,255)
 // const randomInt = (min, max) =>
 //   Math.floor(Math.random() * (max - min + 1) + min);
@@ -97,9 +95,6 @@ btnScrollTo.addEventListener("click", function (e) {
 //   console.log("NAV" , e.target);
 //   this.style.backgroundColor = randomColor();
 // });
-
-
-
 
 // //rgb(255,255,255)
 // const randomInt = (min, max) =>
@@ -128,8 +123,6 @@ btnScrollTo.addEventListener("click", function (e) {
 //   this.style.backgroundColor = randomColor();
 // },true);
 
-
-
 ///////////////////////////////////////
 // Page navigation
 
@@ -148,14 +141,42 @@ btnScrollTo.addEventListener("click", function (e) {
 // 1. Add event listener to common parent element
 // 2. Determine what element originated the event
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
+document.querySelector(".nav__links").addEventListener("click", function (e) {
   e.preventDefault();
 
   // console.log(e.target);
 
   // Matching strategy
-  if (e.target.classList.contains('nav__link')) {
-    const id = e.target.getAttribute('href');
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   }
 });
+
+// const h1 = document.querySelector("h1");
+// // Going downwards: child
+// console.log(h1.querySelectorAll(".highlight"));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color = "white";
+// h1.lastElementChild.style.color = "orangered";
+
+// // Going upwards: parents
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+
+// h1.closest(".header").style.background = "var(--gradient-secondary)"; //yellow
+
+// h1.closest("h1").style.background = "var(--gradient-primary)"; //khudko hi target kiya and green hogya
+
+// //Going sideways: siblings
+// console.log(h1. previousElementSibling); //null
+// console.log(h1.nextElementSibling); //h4
+
+// console.log(h1.previousSibling); 
+// console.log(h1.nextSibling);
+
+// console.log(h1.parentElement. children);
+// [...h1.parentElement.children].forEach(function(el) {
+// if(el !== h1) el.style.transform = 'scale'
+// })
