@@ -127,3 +127,35 @@ btnScrollTo.addEventListener("click", function (e) {
 //   console.log("NAV" , e.target);
 //   this.style.backgroundColor = randomColor();
 // },true);
+
+
+
+///////////////////////////////////////
+// Page navigation
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// Note = event delegation(reducing no of event listener)
+// helps us to improve performance
+// how to implement the technique of event delegation
+// 1. Add event listener to common parent element
+// 2. Determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // console.log(e.target);
+
+  // Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
