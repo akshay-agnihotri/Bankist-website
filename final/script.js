@@ -70,3 +70,60 @@ btnScrollTo.addEventListener("click", function (e) {
   section1.scrollIntoView({ behavior: "smooth" });
 });
 
+
+
+// //rgb(255,255,255)
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)}))`;
+
+// // this event execution happens in target phase
+// document.querySelector(".nav__link").addEventListener("click", function (e) {
+//   e.preventDefault();//so that page will not scroll
+//   console.log("LINK", e.target);
+//   this.style.backgroundColor = randomColor();
+// });
+
+// // this event execution happens in bubbling phase
+// document.querySelector(".nav__links").addEventListener("click", function (e) {
+//   console.log("LINKS", e.target);
+//   this.style.backgroundColor = randomColor();
+// });
+
+// // this event execution happens in bubbling phase
+// document.querySelector(".nav").addEventListener("click", function (e) {
+//   console.log("NAV" , e.target);
+//   this.style.backgroundColor = randomColor();
+// });
+
+
+
+
+// //rgb(255,255,255)
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)}))`;
+
+// // this event execution happens in target phase
+// document.querySelector(".nav__link").addEventListener("click", function (e) {
+//   e.preventDefault();//so that page will not scroll
+//   console.log("LINK", e.target);
+//   this.style.backgroundColor = randomColor();
+//   // e.stopPropagation();
+// });
+
+// // this event execution happens in capturing phase
+// document.querySelector(".nav__links").addEventListener("click", function (e) {
+//   console.log("LINKS", e.target);
+//   this.style.backgroundColor = randomColor();
+// });
+
+// // this event execution happens in capturing phase
+// document.querySelector(".nav").addEventListener("click", function (e) {
+//   console.log("NAV" , e.target);
+//   this.style.backgroundColor = randomColor();
+// },true);
