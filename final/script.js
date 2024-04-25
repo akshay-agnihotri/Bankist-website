@@ -264,7 +264,7 @@ const navHeight = nav.getBoundingClientRect().height;
 
 const stickyNav = function (entries) {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
 
   if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
@@ -333,3 +333,68 @@ const imgObserver = new IntersectionObserver(loadImg, {
 });  
 
 imgTargets.forEach(img => imgObserver.observe(img));
+
+
+//////////////////////////////////
+// Slider components
+
+const slides = document.querySelectorAll(".slide");
+const maxSlides = slides.length;
+const rightBtn = document.querySelector(".slider__btn--right");
+const leftBtn = document.querySelector(".slider__btn--left");
+let currSlide = 0;
+
+
+// //translating eachslides
+// slides.forEach((s,i) => {
+//   s.style.transform = `translateX(${i*100}%)`;
+// });
+
+// leftBtn.addEventListener("click" , function(){
+
+//   if(currSlide === 0) currSlide = maxSlides -1;
+//   else  currSlide = currSlide -1;
+
+//   slides.forEach((s,i) => {
+//     s.style.transform = `translateX(${(i-currSlide)*100}%)`;
+//   });
+
+// });
+
+// rightBtn.addEventListener("click" , function(){
+  
+//   currSlide = (currSlide+1)%maxSlides;
+
+//   slides.forEach((s,i) => {
+//     s.style.transform = `translateX(${(i-currSlide)*100}%)`;
+//   });
+
+// });
+
+// optimizing the above code
+
+const moveSlides = function(currSlide){
+  slides.forEach((s,i) => {
+    s.style.transform = `translateX(${(i-currSlide)*100}%)`;
+  });
+}
+
+//translating eachslides initial condition
+moveSlides(0);
+
+
+leftBtn.addEventListener("click" , function(){
+
+  if(currSlide === 0) currSlide = maxSlides -1;
+  else  currSlide = currSlide -1;
+
+  moveSlides(currSlide);
+
+});
+
+rightBtn.addEventListener("click" , function(){
+  
+  currSlide = (currSlide+1)%maxSlides;
+
+  moveSlides(currSlide);
+});
