@@ -137,13 +137,12 @@ img {
 
 .nav__links {
   display: flex;
+  flex-grow: 0.7;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
 }
 
-.nav__item {
-  margin-left: 4rem;
-}
 
 .nav__link:link,
 .nav__link:visited {
@@ -168,6 +167,15 @@ img {
   color: inherit;
   background-color: var(--color-primary-darker);
   color: #333;
+}
+
+@media only screen and (max-width: 890px) {
+  .nav{
+    padding: 0;
+  }
+  .nav__logo{
+    height: 5rem;
+  }
 }
 
 /* HEADER */
