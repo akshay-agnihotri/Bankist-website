@@ -302,7 +302,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
-  section.classList.add('section--hidden');
+  // section.classList.add('section--hidden');
 });
 
 
@@ -342,6 +342,7 @@ const slides = document.querySelectorAll(".slide");
 const maxSlides = slides.length;
 const rightBtn = document.querySelector(".slider__btn--right");
 const leftBtn = document.querySelector(".slider__btn--left");
+const dotsContainer = document.querySelector(".dots");
 let currSlide = 0;
 
 
@@ -371,7 +372,20 @@ let currSlide = 0;
 
 // });
 
+
 // optimizing the above code
+const createDots = function(){
+  slides.forEach((s,i) =>{
+    dotsContainer.insertAdjacentHTML('beforeend',`<button class = "dots__dot" data-slide=${i}></button>`);
+  });
+}
+
+const dotsActive = function(a){
+  dots.forEach((d) =>{    
+    d.classList.remove('dots__dot--active');
+  });
+  a.classList.add("dots__dot--active");
+}
 
 const moveSlides = function(currSlide){
   slides.forEach((s,i) => {
@@ -379,22 +393,52 @@ const moveSlides = function(currSlide){
   });
 }
 
-//translating eachslides initial condition
-moveSlides(0);
-
-
-leftBtn.addEventListener("click" , function(){
-
+const moveLeft = function(){
   if(currSlide === 0) currSlide = maxSlides -1;
   else  currSlide = currSlide -1;
 
   moveSlides(currSlide);
+  // console.log(currSlide);
+  dotsActive(dots[currSlide]);
+}
 
-});
-
-rightBtn.addEventListener("click" , function(){
-  
+const moveRight = function(){
   currSlide = (currSlide+1)%maxSlides;
 
   moveSlides(currSlide);
+  dotsActive(dots[currSlide]);
+}
+
+//initial condition
+moveSlides(0);
+createDots();
+const dots = document.querySelectorAll('.dots__dot');
+dotsActive(dots[0]);
+
+leftBtn.addEventListener("click" , moveLeft);
+
+rightBtn.addEventListener("click" , moveRight);
+
+dotsContainer.addEventListener("click" , function(e){
+  if(e.target.classList.contains('dots__dot')){
+    let a = e.target.dataset.slide;
+    moveSlides(a);
+    // console.log(e.target);
+    
+    dotsActive(e.target);
+  }
+});
+
+document.addEventListener("keydown",function(e){
+  if(e.key === 'ArrowLeft'){
+    if(currSlide === 0) currSlide = maxSlides -1;
+    else  currSlide = currSlide -1;
+    moveSlides(currSlide);
+    dotsActive(dots[currSlide]);
+  }
+  else if(e.key === 'ArrowRight'){
+    currSlide = (currSlide+1)%maxSlides;
+    moveSlides(currSlide);
+    dotsActive(dots[currSlide]);
+  }
 });
